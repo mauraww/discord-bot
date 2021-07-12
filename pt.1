@@ -1,0 +1,29 @@
+const Discord = require("discord.js")
+const client = new Discord.Client()
+
+client.on("ready", () => {
+  client.user.setPresence({ activity: { name: "with myself" }, status: "online"})
+  
+})
+
+client.on("message", message => {
+  if(message.content === "test") {
+    return message.channel.send("replied")
+  }
+})
+
+  client.login(process.env.BOT_TOKEN);
+
+let count = 0;
+setInterval (
+  
+  () =>
+    require("node-fetch")(process.env.URL).then(() =>
+    console.log(`[${++count}] My Ping Is There ${process.env.URL}`)
+     
+    ),
+  
+  300000
+);
+  
+// <<There is token
